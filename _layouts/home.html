@@ -70,7 +70,6 @@ layout: archive
 		<li> (Sep. 2026) <a href="https://arxiv.org/abs/2605.07727" target="_blank">Drifting Field Policy</a> is accepted to <span class="highlight">NeurIPS 2026</span>!</li>
 		<li> (Aug. 2026) Received B.S. in Electrical and Electronic Engineering from Yonsei University.</li>
 	</ul>
-	<button class="listBtn" id="newsBtn">Show All</button>
 </article>
 
 <h3 class="archive__subtitle">Publications</h3>
@@ -111,30 +110,6 @@ layout: archive
 </article>
 
 <script>
-	const newsButton = document.getElementById("newsBtn");
-	const maxVisibleItems = 8;
-	const newsList = document.querySelectorAll("#newsList li");
-
-	newsList.forEach((item, index) => {
-		if (index >= maxVisibleItems) {
-			item.classList.add("hidden");
-		}
-	});
-
-	newsButton.addEventListener("click", () => {
-		if (newsButton.textContent == "Show All") {
-			newsList.forEach(item => item.classList.remove("hidden"));
-			newsButton.textContent = "Show Less";
-		} else {
-			newsList.forEach((item, index) => {
-				if (index >= maxVisibleItems) {
-					item.classList.add("hidden");
-				}
-			});
-			newsButton.textContent = "Show All";
-		};
-	});
-
 	let currentIframe = 1; // Start with the first iframe
 	const totalIframes = 2; // Total number of iframes
 
