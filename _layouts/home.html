@@ -1,0 +1,187 @@
+---
+layout: archive
+---
+<!-- <link rel="stylesheet" href="assets/css/main.scss"> -->
+
+<!-- <style>
+	.box {
+		width: 100%;
+		height: 100%;
+		border-radius: 70%;f
+		overflow: hidden;
+	}
+
+	.profile {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.img-container {
+		text-align: center;
+	}
+	.iframe-container {
+			position: relative;
+			width: 100%;
+		}
+	.gallery_prev, .gallery_next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background-color: #252a34; /*rgba(0, 0, 0, 0.5);*/
+			color: white;
+			font-size: 18px;
+			border: 2px solid white;
+			border-radius: 50%;
+			padding: 10px;
+			cursor: pointer;
+			z-index: 10;
+		}
+	.gallery_prev {
+		left: 0;
+	}
+	.gallery_next {
+		right: 0;
+	}
+
+</style> -->
+
+{{ content }}
+
+<h3 class="archive__subtitle">Bio</h3>
+<p class="bio">
+	I am Jiwon Choi, an M.S. student in AI Computing at KAIST and a member of the <a href="https://visualai.kaist.ac.kr/" target="_blank">KAIST Visual AI
+		Group</a>, advised by Prof. <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>.
+	I received my B.S. in Electrical and Electronic Engineering from Yonsei University.
+</p>
+<p class="bio">
+	My research interests are in generative modeling and reinforcement learning.
+	Recently, I have been exploring online/offline reinforcement learning of generative-model-based policies for continuous action planning.
+</p>
+<p class="bio">
+	For details, refer to my <a href="/JiwonChoi_CV_260928_.pdf" target="_blank">Curriculum Vitae (CV)</a>.
+</p>
+
+
+<h3 class="archive__subtitle">News</h3>
+<article class="news">
+	<ul id="newsList">
+		<li> (Sep. 2026) Started M.S. program in AI Computing at KAIST. (Advisor: Prof. <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>)</li>
+		<li> (Sep. 2026) <a href="https://arxiv.org/abs/2605.07727" target="_blank">Drifting Field Policy</a> is accepted to <span class="highlight">NeurIPS 2026</span>!</li>
+		<li> (Aug. 2026) Received B.S. in Electrical and Electronic Engineering from Yonsei University.</li>
+		<li> (Jan. 2026) Joined <a href="https://visualai.kaist.ac.kr/" target="_blank">KAIST Visual AI Group</a> as an undergraduate research intern.</li>
+		<li> (Jul. 2025) Joined Yonsei Artificial Intelligence Club (YAI) as a 16th member.</li>
+		<li> (Jan. 2025) Joined <a href="https://cvlab.yonsei.ac.kr/" target="_blank">CVLAB, Yonsei University</a> as an undergraduate intern. (Advisor: Prof. Bumsub Ham)</li>
+	</ul>
+	<button class="listBtn" id="newsBtn">Show All</button>
+</article>
+
+<h3 class="archive__subtitle">Publications</h3>
+<article class="publication">
+
+	<!-- DFP -->
+	<div class="publication-cell">
+		<div class="thumbnail">
+			<img src="/assets/images/DFP_fig.png" alt="DFP Thumbnail">
+		</div>
+		<div class="desc-cell">
+			<header><b>Drifting Field Policy: A One-Step Generative Policy via Wasserstein Gradient Flow</b></header>
+			<div class="authors">
+				<a href="https://63days.github.io/" target="_blank">Juil Koo</a>, <a
+					href="https://uygnim99.github.io/" target="_blank">Mingue Park</a>, <b>Jiwon Choi</b>, <a
+					href="https://myh4832.github.io/" target="_blank">Yunhong Min</a>, <a
+					href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+			</div>
+			<div class="conference">NeurIPS 2026</div>
+			<div class="links">
+				<a href="https://arxiv.org/abs/2605.07727" target="_blank">[Paper]</a>
+				<a href="https://driftingpolicy.github.io/" target="_blank">[Project]</a>
+				<a href="https://github.com/KAIST-Visual-AI-Group/DFP" target="_blank">[Code]</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Unbalanced W-Flow -->
+	<div class="publication-cell">
+		<div class="desc-cell">
+			<header><b>Unbalanced W-Flow: Unbalanced Wasserstein Drifting under Finite-Batch Marginal Fluctuations</b></header>
+			<div class="authors">
+				Jongwook Jeon, <a href="https://uygnim99.github.io/" target="_blank">Mingue Park</a>, <b>Jiwon Choi</b>, <a
+					href="https://jh27kim.github.io/" target="_blank">Jaihoon Kim</a>, <a
+					href="https://myh4832.github.io/" target="_blank">Yunhong Min</a>, <a
+					href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+			</div>
+			<div class="conference">Under review, 2026</div>
+		</div>
+	</div>
+
+</article>
+
+<h3 class="archive__subtitle">Honors and Scholarships</h3>
+<article class="academic-services">
+	<ul>
+		<li>High Honor, Yonsei University (Fall 2025)</li>
+		<li>Honor, Yonsei University (Spring 2025)</li>
+		<li>Merit-based Veritas Scholarship, Yonsei University (Fall 2024, Spring 2025)</li>
+		<li>Merit-based Scholarship, Hongik University (Spring 2021, Fall 2021)</li>
+	</ul>
+</article>
+
+<script>
+	const newsButton = document.getElementById("newsBtn");
+	const maxVisibleItems = 8;
+	const newsList = document.querySelectorAll("#newsList li");
+
+	newsList.forEach((item, index) => {
+		if (index >= maxVisibleItems) {
+			item.classList.add("hidden");
+		}
+	});
+
+	newsButton.addEventListener("click", () => {
+		if (newsButton.textContent == "Show All") {
+			newsList.forEach(item => item.classList.remove("hidden"));
+			newsButton.textContent = "Show Less";
+		} else {
+			newsList.forEach((item, index) => {
+				if (index >= maxVisibleItems) {
+					item.classList.add("hidden");
+				}
+			});
+			newsButton.textContent = "Show All";
+		};
+	});
+
+	let currentIframe = 1; // Start with the first iframe
+	const totalIframes = 2; // Total number of iframes
+
+	function showIframe(iframeNumber) {
+		var iframes = document.querySelectorAll('.iframe');
+		iframes.forEach(item => item.style.display = "none");
+		document.getElementById('iframe' + iframeNumber).style.display = 'block';
+	}
+
+	function nextIframe() {
+		currentIframe = (currentIframe % totalIframes) + 1; // Go to the next iframe, loop back to 1
+		showIframe(currentIframe);
+	}
+
+	function prevIframe() {
+		currentIframe = (currentIframe - 2 + totalIframes) % totalIframes + 1; // Go to the previous iframe, loop back to the last
+		showIframe(currentIframe);
+	}
+</script>
+
+
+{% if paginator %}
+{% assign posts = paginator.posts %}
+{% else %}
+{% assign posts = site.posts %}
+{% endif %}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+	{% include documents-collection.html entries=posts type=entries_layout %}
+</div>
+
+{% include paginator.html %}

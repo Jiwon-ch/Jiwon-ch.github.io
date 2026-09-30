@@ -1,0 +1,226 @@
+<meta charset="utf-8">
+
+{% include seo.html %}
+
+{% unless site.atom_feed.hide %}
+<link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"
+  type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+{% endunless %}
+
+{%- comment %} https://docs.google.com/presentation/d/1rmxwWa9P6_xHqonmh5ONXRS-jPc5XKbnv99Rjkhe04s/present {% endcomment
+-%}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  {% if site.enable_copy_code_button %}
+  window.enable_copy_code_button = true;
+  {% endif %}
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+</noscript>
+
+<style>
+  /* 전체 본문(오른쪽 컬럼) */
+  .layout--single .page__inner-wrap .page__content,
+  .layout--home .page__inner-wrap .page__content,
+  .page__inner-wrap .page__content {
+    font-size: 0.5rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 제목 (Bio, News 등) */
+  .archive__subtitle {
+    font-size: 1.2em !important;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Bio / News - Explicit Small Font */
+  .bio,
+  .news,
+  .bio p,
+  .news li {
+    font-size: 16px !important;
+    line-height: 1.6;
+    /* font-family: "Roboto", serif; */
+  }
+
+  /* Publications / Academic Services - Standard font */
+  /* Publications - Standard font */
+  .page__content .publication {
+    font-size: 0.8em !important;
+    line-height: 1.6;
+    font-family: "Roboto", serif;
+  }
+
+  /* Academic Services */
+
+  /* List Items - Kept Large */
+  .academic-services,
+  .academic-services ul,
+  .academic-services li {
+    font-size: 16px !important;
+  }
+
+  /* Title - Reverted to original small size */
+  .academic-services p,
+  .academic-services b {
+    font-size: 20px !important;
+    margin: 0.25rem 0 0 0 !important;
+  }
+
+  .academic-services ul {
+    margin-top: 0 !important;
+    margin-bottom: 0;
+    margin-left: 1.2rem;
+    padding-left: 0;
+  }
+
+  .academic-services li {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Publication 내부 구조 */
+  .publication-cell {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 0.5rem;
+  }
+
+  .publication-cell:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  /* Thumbnail Container */
+  .publication-cell .thumbnail {
+    flex: 0 0 210px !important;
+    width: 210px !important;
+    min-width: 210px !important;
+    /* Prevent shrinking */
+    height: 168px !important;
+    min-height: 168px !important;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Thumbnail Image - Explicit Pixel Force */
+  .publication-cell .thumbnail img {
+    width: 210px !important;
+    height: 168px !important;
+    min-height: 168px !important;
+    object-fit: cover !important;
+    display: block;
+  }
+
+  .publication-cell .desc-cell {
+    flex: 1;
+    font-size: 0.85em !important;
+    line-height: 1.5;
+  }
+
+  .publication-cell .desc-cell header {
+    display: block;
+    font-size: 12px !important;
+    /* Larger Paper Title */
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    color: #222;
+    line-height: 1.2;
+  }
+
+  .publication-cell .desc-cell header b {
+    font-size: 16px !important;
+    color: inherit;
+  }
+
+  /* Authors - Smaller */
+  .publication-cell .desc-cell .authors {
+    font-size: 0.9em !important;
+    color: #444;
+  }
+
+  /* Conference Emphasis - Normal Text */
+  .publication-cell .desc-cell .conference {
+    color: inherit;
+    font-weight: normal;
+    font-style: normal;
+    margin-top: 0.3rem;
+    font-size: 1.05em !important;
+  }
+
+  /* Academic Services */
+  .academic-services b {
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+
+  .academic-services a {
+    color: #0044cc;
+    text-decoration: underline;
+  }
+
+  /* Avatar */
+  .author__avatar img {
+    width: 200px !important;
+    height: 225px !important;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Sidebar always visible */
+  @media (min-width: 64em) {
+    .sidebar {
+      opacity: 1;
+      transition: none;
+    }
+  }
+
+  /* Mobile tweak */
+  @media (max-width: 640px) {
+    .page__inner-wrap .page__content {
+      font-size: 0.75rem !important;
+    }
+
+    .publication-cell .thumbnail {
+      /* Reduce thumbnail on mobile */
+      flex: 0 0 120px !important;
+      width: 120px !important;
+      min-width: 120px !important;
+      height: 120px !important;
+      /* And the image inside */
+      min-height: 120px !important;
+    }
+
+    .publication-cell .thumbnail img {
+      width: 120px !important;
+      height: 120px !important;
+      min-height: 120px !important;
+    }
+  }
+
+  /* Utility for JS Toggle */
+  .hidden {
+    display: none !important;
+  }
+</style>
+
+{% if site.head_scripts %}
+{% for script in site.head_scripts %}
+<script src="{{ script | relative_url }}"></script>
+{% endfor %}
+{% endif %}
